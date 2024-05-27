@@ -16,16 +16,11 @@ import re
 import streamlit as st
 import pandas as pd
 import pickle
-import inspect
+
 
 # Load your trained model
-#classify_claim = pickle.load(open('claims_classifier_2.pkl', 'rb'))
-# Load the function or model
+classify_claim = pickle.load(open('claims_classifier.pkl', 'rb'))
 
-with open('classify_claim.py', 'r') as f:
-    exec(f.read())
-
-st.title('Claims Classification Tool')
 
 # File uploader
 uploaded_file = st.file_uploader("Choose an Excel file", type=['xlsx'])
