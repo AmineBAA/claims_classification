@@ -28,7 +28,7 @@ st.title('Claims Classification Tool')
 uploaded_file = st.file_uploader("Choose an Excel file", type=['xlsx'])
 if uploaded_file is not None:
     df_test = pd.read_excel(uploaded_file)
-    X_test = df_test.v2t)
+    X_test = df_test.v2
     predictions = classify_claim(X_test) 
     df_test['predictions'] = predictions
     st.write(df_test)
