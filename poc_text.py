@@ -15,40 +15,22 @@ from sklearn.preprocessing import LabelEncoder
 
 import re
 
-def preprocess_text(text):
-    # Remove numbers from the text
-    text = re.sub(r'\d+', '', text)
-    # Convert to lowercase
-    text = text.lower()
-    return text
-
-
-def clean_text(text):
-    if not isinstance(text, str):
-        return ""
-    return re.sub(r'\d+', '', text)
-
 import streamlit as st
 import pandas as pd
 import pickle
 
 # Load your trained model
-classifier, vectorizer = pickle.load(open('text_classifier.pkl', 'rb'))
+classify_claim = pickle.load(open('claims_classifier.pkl', 'rb'))
 
-st.title('Text Classification Tool')
+st.title('Claims Classification Tool')
 
 # File uploader
 uploaded_file = st.file_uploader("Choose an Excel file", type=['xlsx'])
 if uploaded_file is not None:
     df_test = pd.read_excel(uploaded_file)
-    X_test = df_test.v2
-    # Sample text data
-    text_data = X_test
-    X_test=X_test.apply(clean_text)
-    #X_text=[clean_text(text) for text in X_test]
-    X_test_vect = vectorizer.transform(X_test)
-    predictions = classifier.predict(X_test_vect)  # adjust the column name
-    df_test['predictions'] = np.where(predictions==1,'Autre','Monétique')
+    X_test = df_test.v2t)
+    predictions = classify_claim(X_test) 
+    df_test['predictions'] = predictions
     st.write(df_test)
 
 
