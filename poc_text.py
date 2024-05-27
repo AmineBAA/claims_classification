@@ -20,7 +20,7 @@ import pandas as pd
 import pickle
 
 # Load your trained model
-classify_claim = pickle.load(open('claims_classifier.pkl', 'rb'))
+classify_claim = pickle.load(open('claims_classifier_2.pkl', 'rb'))
 
 st.title('Claims Classification Tool')
 
