@@ -16,9 +16,12 @@ import re
 import streamlit as st
 import pandas as pd
 import pickle
+import joblib
 
 # Load your trained model
-classify_claim = pickle.load(open('claims_classifier_2.pkl', 'rb'))
+#classify_claim = pickle.load(open('claims_classifier_2.pkl', 'rb'))
+# Load the function or model
+classify_claim = joblib.load('classify_claim.joblib')
 
 st.title('Claims Classification Tool')
 
