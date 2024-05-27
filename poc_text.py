@@ -11,8 +11,6 @@ import sklearn
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-
-
 import re
 
 import streamlit as st
@@ -20,7 +18,7 @@ import pandas as pd
 import pickle
 
 # Load your trained model
-classify_claim = pickle.load(open('claims_classifier_2.pkl', 'rb'))
+classify_claim = pickle.load(open('../claims_classifier_2.pkl', 'rb'))
 
 st.title('Claims Classification Tool')
 
