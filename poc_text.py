@@ -31,11 +31,14 @@ import torch
 
 def load_model(model_path):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    with open('claim_classifier.pkl', 'rb') as f:
+    with open('model_path', 'rb') as f:
         model,tokenizer = pickle.load(f)
     model.to(device)
     return model
 
+# Example usage
+model_path = 'claim_classifier.pkl'
+model = load_model(model_path)
 
 def classify_claim(claim):
     encoding = tokenizer.encode_plus(
