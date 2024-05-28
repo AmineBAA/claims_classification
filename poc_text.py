@@ -26,6 +26,17 @@ from sklearn.metrics import accuracy_score
 
 # Load your trained model
 model, tokenizer = pickle.load(open('claim_classifier.pkl', 'rb'))
+
+import torch
+
+def load_model(model_path):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    with open('claim_classifier.pkl', 'rb') as f:
+        model,tokenizer = pickle.load(f)
+    model.to(device)
+    return model
+
+
 def classify_claim(claim):
     encoding = tokenizer.encode_plus(
         claim,
